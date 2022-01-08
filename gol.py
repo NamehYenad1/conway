@@ -61,7 +61,7 @@ def printGrid():
     print(stringToPrint)
 
 def moveCursorToTop():
-    print("\033[12A")
+    print("\033[13A")
 
                 
 
@@ -86,6 +86,7 @@ def moveCursorToTop():
 def main(): 
     ticks = int(input("Enter lifespan: "))
     for i in range(0, ticks): 
+        print(i)
         printGrid()
         moveCursorToTop()
         upDateGrid()
