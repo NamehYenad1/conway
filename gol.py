@@ -1,4 +1,5 @@
 import random
+import time
 from copy import copy, deepcopy
 #create 2d array first to simulate a grid
 def createArray(columns, rows):
@@ -20,6 +21,22 @@ def sumNeighbours(grid):
     for i in range(0, len(grid)): 
             sum =0
             for x in range(0, len(grid[0])):
+                sum += grid[i-1][x]
+                sum += grid[i-1][x-1]
+                sum+= grid[i-1][x+1]
+                sum+= grid[i][x-1]
+                sum+= grid[i][x+1]
+                sum+=grid[i+1][x]
+                sum+=grid[i+1][x-1]
+                sum+=grid[i+1][x+1]
+                #implement rules here
+                if((grid[i][x]==1 and sum<2) or(grid[i][x]==1 and sum>3)): 
+                    newGenerationGrid[i][x]=0
+                elif(grid[i][x]==0 and sum==3):
+                    newGenerationGrid[i][x]=1
+                else:
+                    newGenerationGrid[i][x]=0
+                
 
 
                 
@@ -32,12 +49,19 @@ def sumNeighbours(grid):
 #Testing basic print to console
 def printConsole(ticks): 
     for i in range(0, ticks):
+        stringToPrint=''
         for i in range(0, len(newGrid)): 
-            for x in range(0, len(newGrid[0])):
+            stringToPrint = stringToPrint +'\n'
+            for x in range(0, len(newGrid[0])):              
                 if(newGrid[i][x]==0):
-                    print(' ',end ='')
+                    stringToPrint = stringToPrint+' '
+                    # print(' ',end ='')
                 else:
-                    print('*',end ='')
+                    stringToPrint = stringToPrint+'*'
+                    # print('*',end ='')
+        print(stringToPrint, end='\r', flush=True)
+        time.sleep(0.5)
+        print(stringToPrint, end='\r', flush=True)
                 
 printConsole(1) 
 
