@@ -12,7 +12,7 @@ def createArray(columns, rows):
     return grid
 
 newGrid = createArray(10,10)
-print(newGrid)
+# print(newGrid)
 
 
 #computing neighbours
@@ -51,7 +51,6 @@ def printConsole(ticks):
     for i in range(0, ticks):
         stringToPrint=''
         for i in range(0, len(newGrid)): 
-            stringToPrint = stringToPrint +'\n'
             for x in range(0, len(newGrid[0])):              
                 if(newGrid[i][x]==0):
                     stringToPrint = stringToPrint+' '
@@ -59,21 +58,25 @@ def printConsole(ticks):
                 else:
                     stringToPrint = stringToPrint+'*'
                     # print('*',end ='')
+            stringToPrint = stringToPrint +'\n'
         print(stringToPrint, end='\r', flush=True)
         time.sleep(0.5)
         print(stringToPrint, end='\r', flush=True)
         
 
 
-printConsole(1) 
+# printConsole(1) 
 
-for x in range(10):
-    print('x\nx*', end='\r')
-    time.sleep(0.5)
-print()            
-    
+
+ 
+print('\n* *   * * \n ** *** * \n ** *  * *\n** ***** *\n  ****    \n  * ** * *\n   ** * * \n * *** *  \n**  *  ***\n ****   * ')
+print("\033[12A")
+print('\n* *   * * \n ** *** * \n ** *  * *\n** ***** *\n  ****    \n  * ** * *\n   ** * * \n * *** *  \n**  *  ***\n ****   * ')
+time.sleep(0.5)
+   
+
 # for x in range(10):
-#     print('\r\n* *   * * \n ** *** * \n ** *  * *\n** ***** *\n  ****    \n  * ** * *\n   ** * * \n * *** *  \n**  *  ***\n ****   * \r', end='\r')
+#     print('\n* *   * * \n ** *** * \n ** *  * *\n** ***** *\n  ****    \n  * ** * *\n   ** * * \n * *** *  \n**  *  ***\n ****   * ', end='\r')
 #     time.sleep(0.5)
 # print()            
     
