@@ -13,7 +13,6 @@ def createArray(columns, rows):
 
 Grid = createArray(10,10)
 
-
 #update grid
 def upDateGrid(): 
     global Grid
@@ -24,8 +23,6 @@ def upDateGrid():
             
             for x in range(0, len(Grid[0])):
                 sum =0
-                # When location is at edges, find way to wrap around to other side error is when dealing with the out edges of the grid, looping over array will go out of bounds, finding a way to wrap around the edges of the grid by drawing and visualizing on physical piece of paper
-
                 sum += Grid[(i-1+len(Grid)) % len(Grid)][(x+len(Grid)) % len(Grid[0])]
                 sum += Grid[(i-1+len(Grid))% len(Grid)][(x-1+len(Grid))% len(Grid[0])]
                 sum+= Grid[(i-1+len(Grid)) % len(Grid)][(x+1+len(Grid))% len(Grid[0])]
@@ -34,7 +31,6 @@ def upDateGrid():
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x+len(Grid))% len(Grid[0])]
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x-1+len(Grid))% len(Grid[0])]
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x+1+len(Grid))% len(Grid[0])]
-                # print(sum)
         
                 #implement rules here
                 if((Grid[i][x]==1 and sum<2) or(Grid[i][x]==1 and sum>3)): 
@@ -65,25 +61,6 @@ def moveCursorToTop():
     print("\033[13A")
 
                 
-
-# #Testing basic print to console
-# def printGrid(ticks): 
-#     for i in range(0, ticks):
-#         stringToPrint=''
-#         for i in range(0, len(newGrid)): 
-#             for x in range(0, len(newGrid[0])):              
-#                 if(newGrid[i][x]==0):
-#                     stringToPrint = stringToPrint+' '
-#                     # print(' ',end ='')
-#                 else:
-#                     stringToPrint = stringToPrint+'*'
-#                     # print('*',end ='')
-#             stringToPrint = stringToPrint +'\n'
-#         print(stringToPrint, end='\r', flush=True)
-#         time.sleep(0.5)
-#         print(stringToPrint, end='\r', flush=True)
-
-
 def main(): 
     ticks = int(input("Enter lifespan: "))
     for i in range(0, ticks): 
