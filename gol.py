@@ -1,5 +1,4 @@
 import random
-# import time
 from copy import copy, deepcopy
 #create 2d array first to simulate a grid
 def createArray(columns, rows):
@@ -13,14 +12,11 @@ def createArray(columns, rows):
 
 Grid = createArray(10,10)
 
-#counting neightbours
-
 
 #update grid
 def upDateGrid(): 
     global Grid
     newGenerationGrid = deepcopy(Grid)
- 
  
 
     for i in range(0, len(Grid)): 
@@ -41,11 +37,14 @@ def upDateGrid():
                 #implement rules here
                 if((Grid[i][x]==1 and sum<2) or(Grid[i][x]==1 and sum>3)): 
                     newGenerationGrid[i][x]=0
-                elif(Grid[i][x]==0 and sum==3):
+                elif((Grid[i][x]==0 and sum==3) or(Grid[i][x]==1 and (sum==2 or sum == 3))):
                     newGenerationGrid[i][x]=1
                 else:
                     newGenerationGrid[i][x]=0
+
+
     Grid = newGenerationGrid
+    print(newGenerationGrid)
     
                 
 def printGrid(): 
