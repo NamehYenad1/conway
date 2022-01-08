@@ -62,10 +62,20 @@ def printConsole(ticks):
         print(stringToPrint, end='\r', flush=True)
         time.sleep(0.5)
         print(stringToPrint, end='\r', flush=True)
-                
+        
+
+
 printConsole(1) 
 
-                
+for x in range(10):
+    print('x\nx*', end='\r')
+    time.sleep(0.5)
+print()            
+    
+# for x in range(10):
+#     print('\r\n* *   * * \n ** *** * \n ** *  * *\n** ***** *\n  ****    \n  * ** * *\n   ** * * \n * *** *  \n**  *  ***\n ****   * \r', end='\r')
+#     time.sleep(0.5)
+# print()            
     
 
 
