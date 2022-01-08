@@ -1,4 +1,5 @@
 import random
+import time
 from copy import copy, deepcopy
 #create 2d array first to simulate a grid
 def createArray(columns, rows):
@@ -20,9 +21,9 @@ def upDateGrid():
  
 
     for i in range(0, len(Grid)): 
-            sum =0
+            
             for x in range(0, len(Grid[0])):
-                
+                sum =0
                 # When location is at edges, find way to wrap around to other side error is when dealing with the out edges of the grid, looping over array will go out of bounds, finding a way to wrap around the edges of the grid by drawing and visualizing on physical piece of paper
 
                 sum += Grid[(i-1+len(Grid)) % len(Grid)][(x+len(Grid)) % len(Grid[0])]
@@ -33,6 +34,7 @@ def upDateGrid():
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x+len(Grid))% len(Grid[0])]
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x-1+len(Grid))% len(Grid[0])]
                 sum+=Grid[(i+1+len(Grid)) % len(Grid)][(x+1+len(Grid))% len(Grid[0])]
+                # print(sum)
         
                 #implement rules here
                 if((Grid[i][x]==1 and sum<2) or(Grid[i][x]==1 and sum>3)): 
@@ -44,7 +46,7 @@ def upDateGrid():
 
 
     Grid = newGenerationGrid
-    print(newGenerationGrid)
+
     
                 
 def printGrid(): 
@@ -89,7 +91,7 @@ def main():
         printGrid()
         moveCursorToTop()
         upDateGrid()
-        
+        time.sleep(0.5)
 
 main()
 
