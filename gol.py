@@ -13,30 +13,33 @@ def createArray(columns, rows):
 
 Grid = createArray(10,10)
 
+#counting neightbours
 
 
-#computing neighbours
+#update grid
 def upDateGrid(): 
     global Grid
     newGenerationGrid = deepcopy(Grid)
+    print(len(Grid))
+    print(len(Grid[0]))
+
     for i in range(0, len(Grid)): 
             sum =0
             for x in range(0, len(Grid[0])):
                 
                 # When location is at edges, find way to wrap around to other side error is when dealing with the out edges of the grid, looping over array will go out of bounds, finding a way to wrap around the edges of the grid by drawing and visualizing on physical piece of paper
-
-                sum += Grid[i-1][x]
-                sum += Grid[i-1][x-1]
-                sum+= Grid[i-1][x+1]
-                sum+= Grid[i][x-1]
-                sum+= Grid[i][x+1]
-                sum+=Grid[i+1][x]
-                sum+=Grid[i+1][x-1]
-                sum+=Grid[i+1][x+1]
+                print(i)
+                print(x)
+                sum += Grid[(i-1) % len(Grid)][x] % len(Grid[0])
+                sum += Grid[(i-1)% len(Grid)][(x-1)]% len(Grid[0])
+                sum+= Grid[(i-1) % len(Grid)][(x+1)]% len(Grid[0])
+                sum+= Grid[i % len(Grid)][(x-1)]% len(Grid[0])
+                sum+= Grid[i % len(Grid)][(x+1)]% len(Grid[0])
+                sum+=Grid[(i+1) % len(Grid)][x]% len(Grid[0])
+                sum+=Grid[(i+1) % len(Grid)][(x-1)]% len(Grid[0])
+                sum+=Grid[(i+1) % len(Grid)][(x+1)]% len(Grid[0])
+        
                 #implement rules here
-
-
-
                 if((Grid[i][x]==1 and sum<2) or(Grid[i][x]==1 and sum>3)): 
                     newGenerationGrid[i][x]=0
                 elif(Grid[i][x]==0 and sum==3):
