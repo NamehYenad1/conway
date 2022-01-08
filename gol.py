@@ -22,6 +22,9 @@ def upDateGrid():
     for i in range(0, len(Grid)): 
             sum =0
             for x in range(0, len(Grid[0])):
+                
+                # When location is at edges, find way to wrap around to other side error is when dealing with the out edges of the grid, looping over array will go out of bounds, finding a way to wrap around the edges of the grid by drawing and visualizing on physical piece of paper
+
                 sum += Grid[i-1][x]
                 sum += Grid[i-1][x-1]
                 sum+= Grid[i-1][x+1]
@@ -31,6 +34,9 @@ def upDateGrid():
                 sum+=Grid[i+1][x-1]
                 sum+=Grid[i+1][x+1]
                 #implement rules here
+
+
+
                 if((Grid[i][x]==1 and sum<2) or(Grid[i][x]==1 and sum>3)): 
                     newGenerationGrid[i][x]=0
                 elif(Grid[i][x]==0 and sum==3):
@@ -73,7 +79,6 @@ def moveCursorToTop():
 #         print(stringToPrint, end='\r', flush=True)
 #         time.sleep(0.5)
 #         print(stringToPrint, end='\r', flush=True)
-        
 
 
 def main(): 
